@@ -1,15 +1,17 @@
-class Tarottogo::Tarot 
+class Tarot 
 attr_accessor :set, :card, :meaning, :url 
-  def self.card
-    puts " "
-    puts <<-DOC
-    1. Major Arcana
-    2. Wands 
-    3. Cups 
-    4. Swords 
-    5. Pentacles
-   DOC
-    puts " "
+  
+  def Tarot.card
+  #   puts " "
+  #   puts <<-DOC
+  #   1. Major Arcana
+  #   2. Wands 
+  #   3. Cups 
+  #   4. Swords 
+  #   5. Pentacles
+  # DOC
+  #   puts " "
+  
     cardset_1 = Tarot.new 
     cardset_1.set = "Major Arcana"
     cardset_1.card = "Card Name"

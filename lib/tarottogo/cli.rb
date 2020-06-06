@@ -9,7 +9,7 @@ class Tarottogo::CLI
   end 
   
   def list_cardsets
-    @cardset = Tarottogo::Tarot.card 
+    @cardset = Tarot.card 
   end 
   
   def menu

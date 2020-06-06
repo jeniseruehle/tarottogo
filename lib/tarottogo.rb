@@ -1,6 +1,3 @@
-require "tarottogo/version"
-
-module Tarottogo
-  class Error < StandardError; end
-  # Your code goes here...
-end
+require_relative "./tarottogo/version"
+require_relative "./tarottogo/cardset"
+require_relative "./tarottogo/cli"

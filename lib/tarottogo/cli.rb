@@ -1,4 +1,4 @@
-# CLI Controller
+require 'pry'
 class Tarottogo::CLI 
   
   def call 
@@ -9,7 +9,10 @@ class Tarottogo::CLI
   end 
   
   def list_cardsets
-    @cardset = Tarot.card 
+    @cardset = Tarottogo::Tarot.card 
+    @cardset.each.with_index(1) do |card, i|
+      puts "#{i}. #{card.set}"
+    end
   end 
   
   def menu
@@ -17,21 +20,14 @@ class Tarottogo::CLI
     while input != "exit"
       puts "Enter number of the card set you wish to see or type 'list' to return to card set list or type 'exit' to end:"
       input = gets.strip
-      case input 
-      when "1"
-        puts "Major Arcana"
-      when "2"
-        puts "Wands"
-      when "3"
-        puts "Cups"
-      when "4" 
-        puts "Swords"
-      when "5"
-        puts "Pentacles"
-      when "list"
+      
+      if input.to_i > 0 
+        the_cardset = @cardset[input.to_i-1] 
+        puts "#{the_cardset.set}"
+      elsif input == "list"
         list_cardsets
-      #else 
-        #"Please choose the number of a card set, type 'list' to return to cardsets or exit:"
+      else 
+       puts "Please choose the number of a card set, type 'list' to return or exit:"
       end 
     end
   end 

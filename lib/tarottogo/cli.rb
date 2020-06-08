@@ -1,5 +1,5 @@
 require 'pry'
-class Tarottogo::CLI 
+class CLI 
   
   def call 
     puts "Welcome to Tarot To Go:"
@@ -9,9 +9,13 @@ class Tarottogo::CLI
   end 
   
   def list_cardsets
-    @cardset = Tarottogo::Tarot.card 
+    @cardset = Scraper.card 
     @cardset.each.with_index(1) do |card, i|
-      puts "#{i}. #{card.set}"
+      puts "#{i}. #{card.set_1}"
+      puts "#{i}. #{card.set_2}"
+      puts "#{i}. #{card.set_3}"
+      puts "#{i}. #{card.set_4}"
+      puts "#{i}. #{card.set_5}"
     end
   end 
   

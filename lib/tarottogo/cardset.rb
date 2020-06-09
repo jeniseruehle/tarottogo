@@ -9,7 +9,10 @@ class Cardset
   @@all = [] 
   
   def initialize(cardset_hash)
-    
-    
   end 
+  
+  def major_arcana
+    @ma = Scraper.major_arcana 
+  end 
+  
 end 

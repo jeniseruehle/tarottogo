@@ -10,28 +10,39 @@ class CLI
   
   def list_cardsets
     @cardset = Scraper.card 
-    @cardset.each.with_index(1) do |card, i|
-      puts "#{i}. #{card.set_1}"
-      puts "#{i}. #{card.set_2}"
-      puts "#{i}. #{card.set_3}"
-      puts "#{i}. #{card.set_4}"
-      puts "#{i}. #{card.set_5}"
+    @cardset.each do |card|
+      puts " "
+      puts "1. #{card.set_1}"
+      puts "2. #{card.set_2}"
+      puts "3. #{card.set_3}"
+      puts "4. #{card.set_4}"
+      puts "5. #{card.set_5}"
+      puts " "
     end
   end 
   
   def menu
     input = nil 
     while input != "exit"
-      puts "Enter number of the card set you wish to see or type 'list' to return to card set list or type 'exit' to end:"
+      puts "Enter the number of the cardset you wish to see or type 'exit' to end:"
       input = gets.strip
-      
-      if input.to_i > 0 
-        the_cardset = @cardset[input.to_i-1] 
-        puts "#{the_cardset.set}"
-      elsif input == "list"
+      case input
+      when "1"
+        
+      when "2"
+        
+      when "3"
+        
+      when "4"
+        
+      when "5"
+        
+      when "list"
         list_cardsets
-      else 
-       puts "Please choose the number of a card set, type 'list' to return or exit:"
+      when "exit"
+        goodbye
+      else  
+       error
       end 
     end
   end 
@@ -40,7 +51,9 @@ class CLI
     puts "Until next time, Happy Reading!"
   end 
   
-  
+  def error
+    puts "Please choose a cardset number 1-5, type 'list' to return to main menu, or 'exit' to exit the program:"
+  end 
   
   
 end 

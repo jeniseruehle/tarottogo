@@ -19,7 +19,7 @@ attr_accessor :set_1, :set_2, :set_3, :set_4, :set_5
   end 
   
   def self.scrape_set_titles
-    tarot_sets = Nokogiri::HTML(open("https://labyrinthos.co/blogs/tarot-card-meanings-list"))
+    doc = Nokogiri::HTML(open("https://labyrinthos.co/blogs/tarot-card-meanings-list"))
     
     cards = self.new
       
@@ -32,18 +32,18 @@ attr_accessor :set_1, :set_2, :set_3, :set_4, :set_5
     cards 
   end 
   
-  def self.scrape_meanings
-    card_meanings = {}
-    doc = Nokogiri::HTML(open("https://labyrinthos.co/blogs/tarot-card-meanings-list"))
+  # def self.scrape_meanings
+  #   card_meanings = {}
+  #   doc = Nokogiri::HTML(open("https://labyrinthos.co/blogs/tarot-card-meanings-list"))
     
-    major_arcana = doc.search("#majorarcana h3").text 
-      #doc.search("#majorarcana div.rte.rte--indented-images").text
-    wands = doc.search("#wands h3").text 
-    cups = doc.search("#cups h3").text 
-    swords = doc.search("#swords h3").text 
-    pentacles = doc.search("#pentacles h3").text
-    binding.pry
+  #   # major_arcana = doc.search("#majorarcana h3").text 
+  #   #   #doc.search("#majorarcana div.rte.rte--indented-images").text
+  #   # wands = doc.search("#wands h3").text 
+  #   # cups = doc.search("#cups h3").text 
+  #   # swords = doc.search("#swords h3").text 
+  #   # pentacles = doc.search("#pentacles h3").text
+
     
-  end 
+  # end 
   
 end 

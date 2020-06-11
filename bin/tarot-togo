@@ -2,4 +2,4 @@
 
 require './lib/tarottogo/'
 
-CLI.new.call
+Tarottogo::CLI.new.call

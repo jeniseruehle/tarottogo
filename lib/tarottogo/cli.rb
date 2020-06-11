@@ -1,24 +1,20 @@
 require 'pry'
-class CLI 
+class Tarottogo::CLI 
   
   def call 
     puts "Welcome to Tarot To Go:"
     list_cardsets
     menu
-    goodbye
   end 
   
   def list_cardsets
-    @cardset = Scraper.card 
-    @cardset.each do |card|
       puts " "
-      puts "1. #{card.set_1}"
-      puts "2. #{card.set_2}"
-      puts "3. #{card.set_3}"
-      puts "4. #{card.set_4}"
-      puts "5. #{card.set_5}"
+      puts "1. Major Arcana"
+      puts "2. Wands"
+      puts "3. Cups"
+      puts "4. Swords"
+      puts "5. Pentacles"
       puts " "
-    end
   end 
   
   def menu

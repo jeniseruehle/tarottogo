@@ -8,35 +8,21 @@ class Tarottogo::Cardset
  
   @@all = [] 
   
-  def self.new_from_index(card)
-    self.new(
-      card.css("h4").text,
-      "https://www.biddytarot.com/#{card.attribute("href").text}",
-      card.css("span.card-item-content").text,
-      card.css("p")[1].text
-      )
+  def initialize(card_set)
+    card_set.each do |a, v|
+      self.send("#{a}=", v)
+    end 
+     @@all << self 
   end 
   
-  def initialize(name=nil, meaning=nil)
-    @name = name 
-    @meaning = meaning 
-    @@all << self 
+  def self.create_from_set(cards_array)
+    cards_array.each do |card_set|
+      self.new(card_set)
   end 
-  
+
   def self.all 
-    @@all 
+    @@all
   end 
-  
-  def self.find(id)
-    self.all[id-1]
-  end 
-  
-  def name 
-    @name ||= doc.css("h4.gold.centered.center.upper").text
-  end 
-  
-  def meaning
-    @meaning ||= doc.css("").text
-  end 
+
   
 end 

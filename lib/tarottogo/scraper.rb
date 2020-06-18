@@ -16,10 +16,10 @@ class Tarottogo::Scraper
   def scrape_cardsets(cardset_url)
     array = []
     html = Nokogiri::HTML(open(@cardset_url))
-    html.css("grid.tarot-list.page").each do |cardset|
+    html.css('div[class=cardboxwrapper]').each do |cardset|
       cardset_hash = {
-        set: cardset.css('section.suit').text,
-        card_url: "https://labyrinthos.co/blogs/tarot-card-meanings-list#{card.css('a').attr('href').value}"}
+        set: cardset.css('a').attr('href').value,
+        cards_url: "https://www.biddytarot.com/tarot-card-meanings/#{card.css('a').attr('href').value}"}
       array << cardset_hash
     end
   array

@@ -7,7 +7,6 @@ class Tarottogo::CLI
   def call 
     puts "Welcome to Tarot To Go:"
     list_cardsets
-    cards 
     menu
   end 
   
@@ -28,7 +27,7 @@ class Tarottogo::CLI
       input = gets.strip
       case input
       when "1"
-        cards
+        
       when "2"
         
       when "3"

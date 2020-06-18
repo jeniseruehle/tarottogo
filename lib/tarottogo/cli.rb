@@ -24,7 +24,8 @@ class Tarottogo::CLI
   end 
   
   def cards 
-    cards_array = Tarottogo::Scraper.
+    cards_array = Tarottogo::Scraper.scrape_index(BASE_PATH + 'index.html')
+    Tarottogo::Cardset.create_from_set(cards_array)
   end 
   
   def menu
@@ -34,7 +35,7 @@ class Tarottogo::CLI
       input = gets.strip
       case input
       when "1"
-        
+        cards
       when "2"
         
       when "3"

@@ -5,9 +5,17 @@ require 'nokogiri'
 
 class Tarottogo::Scraper 
   
-  def self.scrape_index(index_url)
+  def initialize(cardset_url)
+    @cardset_url = cardset_url
+  end 
+  
+  def scrape 
+    scrape_cards
+  end 
+  
+  def scrape_cards(cardset_url)
     cards = []
-    html = Nokogiri::HTML(open(index_url))
+    html = Nokogiri::HTML(open(@cardset_url))
     html.css("grid.tarot-list.page").each do |card|
       cardset = {
         name: html.css("h3").text,

@@ -2,6 +2,7 @@ require 'pry'
 # require_relative "./lib/scraper.rb"
 # require_relative "./lib/cardset.rb"
 require 'nokogiri'
+require 'open-uri'
 
 class Tarottogo::CLI 
   BASE_PATH = "https://labyrinthos.co/blogs/tarot-card-meanings-list"

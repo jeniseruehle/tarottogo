@@ -1,11 +1,8 @@
 require 'pry'
-# require_relative "./lib/scraper.rb"
-# require_relative "./lib/cardset.rb"
 require 'nokogiri'
 require 'open-uri'
 
 class Tarottogo::CLI 
-  BASE_PATH = "https://labyrinthos.co/blogs/tarot-card-meanings-list"
   
   def call 
     puts "Welcome to Tarot To Go:"
@@ -22,11 +19,6 @@ class Tarottogo::CLI
       puts "4. Swords"
       puts "5. Pentacles"
       puts " "
-  end 
-  
-  def cards 
-    cards_array = Tarottogo::Scraper.scrape_index(BASE_PATH + 'index.html')
-    Tarottogo::Cardset.create_from_set(cards_array)
   end 
   
   def menu

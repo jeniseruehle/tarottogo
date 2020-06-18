@@ -19,7 +19,7 @@ class Tarottogo::Scraper
     html.css("grid.tarot-list.page").each do |card|
       cardset = {
         name: html.css("h3").text,
-        card_url: html.css("a").attribute("href").value
+        card_url: "https://labyrinthos.co/blogs/tarot-card-meanings-list#{card.css('a').attr('href').value}"}
       }
       cards << cardset
     end

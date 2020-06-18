@@ -26,7 +26,7 @@ class Tarottogo::Scraper
  end 
  
  def self.scrape_card_meaning(input)
-   url = Cardset.select_by_name(input)
+   url = Tarottogo::Cardset.select_by_name(input)
    card_array = []
    html = Nokogiri::HTML(open(url))
    card_hash = {}

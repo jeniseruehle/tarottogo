@@ -19,6 +19,7 @@ class Tarottogo::Cardset
     cards_array.each do |card_set|
       self.new(card_set)
   end 
+end 
   
   def card_meanings(meanings_hash)
     meanings_hash.each do |attr, value|
@@ -30,6 +31,4 @@ class Tarottogo::Cardset
   def self.all 
     @@all
   end 
-
-  
 end 

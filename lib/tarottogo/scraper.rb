@@ -10,7 +10,7 @@ class Tarottogo::Scraper
     html = Nokogiri::HTML(open(index_url))
     html.css("grid.tarot-list.page").each do |card|
       cardset = {
-        name: html.css("h3")
+        name: html.css("h3").text,
         card_url: html.css("a").attribute("href").value
       }
       cards << cardset

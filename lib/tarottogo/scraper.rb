@@ -20,9 +20,9 @@ class Tarottogo::Scraper
       cardset_hash = {
         set: cardset.css('section.suit').text,
         card_url: "https://labyrinthos.co/blogs/tarot-card-meanings-list#{card.css('a').attr('href').value}"}
-      array << cardset
+      array << cardset_hash
     end
-  cards 
+  array
  end 
  
  def self.scrape_card_meaning(input)
@@ -31,7 +31,11 @@ class Tarottogo::Scraper
    html = Nokogiri::HTML(open(url))
    card_hash = {}
    
-   card_hash[:meaning] = html.css("div.rte.rte--indented-images").text
+   card_hash[:name] = html.css('h3')[0].text
+   card_hash[:meaning] = html.css('div.rte.rte--intended-images').text 
+   
+   card_array << card_hash
+   card_array
  end 
 
 end

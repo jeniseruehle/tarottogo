@@ -26,7 +26,16 @@ class Tarottogo::Cardset
     end
   end 
 
+  def self.select_by_name(input)
+    card_variable = self.all.find {|c| input == c.name}
+    card_variable.card_url
+  end 
+    
   def self.all 
     @@all
+  end 
+  
+  def self.destroy
+    @@all.clear
   end 
 end 

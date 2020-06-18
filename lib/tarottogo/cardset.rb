@@ -4,28 +4,26 @@ require 'open-uri'
 require 'nokogiri'
 
 class Tarottogo::Cardset
-  attr_accessor :name, :card_url, :meaning
+  attr_accessor :set, :name, :card_url, :meaning
  
   @@all = [] 
   
-  def initialize(card_set)
-    card_set.each do |a, v|
-      self.send("#{a}=", v)
-    end 
+  def initialize(cardset_hash)
+    self.send('set=', cardset_hash[:set])
+    self.send('card_url=', cardset_hash[:card_url])
      @@all << self 
   end 
   
-  def self.create_from_set(cards_array)
-    cards_array.each do |card_set|
-      self.new(card_set)
+  def self.create_from_set(card_array)
+    card_array.each do |cardset_hash|
+      self.new(cardset_hash)
+    end 
   end 
-end 
   
-  def card_meanings(meanings_hash)
-    meanings_hash.each do |attr, value|
-      self.send("#{attr}=", value)
+  def self.print 
+    self.all.each_with_index do |card, index|
+      puts "#{index + 1}. #{card.name}"
     end
-    self 
   end 
 
   def self.all 

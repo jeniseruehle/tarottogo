@@ -8,9 +8,9 @@ class Tarottogo::Scraper
   def self.scrape_index(index_url)
     cards = []
     html = Nokogiri::HTML(open(index_url))
-    html.css("div#biddy_card_list").each do |card|
+    html.css("grid.tarot-list.page").each do |card|
       cardset = {
-        name: html.css(".gold.centered.center.upper")
+        name: html.css("h3")
         card_url: html.css("a").attribute("href").value
       }
       cards << cardset
@@ -18,10 +18,11 @@ class Tarottogo::Scraper
   cards 
  end 
  
- def self.scrape_ma_card(card_url)
+ def self.scrape_card_meaning(index_url)
    card = {}
-   html = Nokogiri::HTML(open(card_url))
-   container = html.css
+   html = Nokogiri::HTML(open(index_url))
+   card[:meaning] = html.css("div.rte.rte--indented-images").text
+ end 
 
 end
 

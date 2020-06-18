@@ -4,7 +4,7 @@ require 'open-uri'
 require 'nokogiri'
 
 class Tarottogo::Cardset
-  attr_accessor :name, :meaning
+  attr_accessor :name, :card_url, :upright, :reversed
  
   @@all = [] 
   
@@ -18,6 +18,13 @@ class Tarottogo::Cardset
   def self.create_from_set(cards_array)
     cards_array.each do |card_set|
       self.new(card_set)
+  end 
+  
+  def card_meanings(meanings_hash)
+    meanings_hash.each do |attr, value|
+      self.send("#{attr}=", value)
+    end
+    self 
   end 
 
   def self.all 

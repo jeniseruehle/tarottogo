@@ -1,6 +1,6 @@
 require 'pry'
 class Tarottogo::CLI 
-  
+  BASE_PATH = 
   def call 
     puts "Welcome to Tarot To Go:"
     list_cardsets

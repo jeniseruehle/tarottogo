@@ -17,18 +17,20 @@ class Tarottogo::Scraper
     cards = []
     html = Nokogiri::HTML(open(@cardset_url))
     html.css("grid.tarot-list.page").each do |card|
-      cardset = {
-        name: html.css("h3").text,
-        card_url: "https://labyrinthos.co/blogs/tarot-card-meanings-list#{card.css('a').attr('href').value}"}
-      }
+      cardset_hash = {
+        set: card.css("h2.text-center").text,
+        card: card.css("h3").text,
+        card_url: card.css("a").attribute("href").value}
       cards << cardset
     end
   cards 
  end 
  
- def self.scrape_card_meaning(index_url)
-   card = {}
-   html = Nokogiri::HTML(open(index_url))
+ def self.scrape_card_meaning(input)
+   url = Cardset.select_by_name(input)
+   card_array = []
+   html = Nokogiri::HTML(open(url))
+   card_hash
    card[:meaning] = html.css("div.rte.rte--indented-images").text
  end 
 

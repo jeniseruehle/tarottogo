@@ -25,14 +25,15 @@ class Tarottogo::Scraper
   array
  end 
  
- def self.scrape_card_meaning(input)
+ def self.scrape_by_card(input)
    url = Tarottogo::Cardset.select_by_name(input)
    card_array = []
    html = Nokogiri::HTML(open(url))
    card_hash = {}
    
-   card_hash[:name] = html.css('h3')[0].text
-   card_hash[:meaning] = html.css('div.rte.rte--intended-images').text 
+   card_hash[:name] = html.css('h4.gold.centered.center.upper')[0].text
+   card_hash[:meaning] = html.css('h2.small.purple.upper.center.centered')[0].text 
+   card_hash[:website] = html.css('div.card_item a').attr('href')
    
    card_array << card_hash
    card_array

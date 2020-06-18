@@ -14,13 +14,13 @@ class Tarottogo::Scraper
   end 
   
   def scrape_cardsets(cardset_url)
-    cards = []
+    array = []
     html = Nokogiri::HTML(open(@cardset_url))
     html.css("grid.tarot-list.page").each do |cardset|
       cardset_hash = {
-        set: card.css(''),
+        set: cardset.css('section.suit').text,
         card_url: "https://labyrinthos.co/blogs/tarot-card-meanings-list#{card.css('a').attr('href').value}"}
-      cards << cardset
+      array << cardset
     end
   cards 
  end 

@@ -5,18 +5,23 @@ require 'nokogiri'
 
 class Tarottogo::Scraper 
   
-  def self.get_page
-    get_page = Nokogiri::HTML(open("https://labyrinthos.co/blogs/tarot-card-meanings-list"))
+  def self.scrape_index(index_url)
     cards = []
-    get_page.css("div.grid.tarot-list.page").each do |cardset|
-      cardset.css("grid__item large--one-quarter medium--one-third text-center card").each do |card|
-      card_name = card.css("h3").text
-      card_meaning = card.css("div.rte.rte--indented-images")
-    cards << {name: card_name, meaning: card_meaning}  
+    html = Nokogiri::HTML(open(index_url))
+    html.css("div#biddy_card_list").each do |card|
+      cardset = {
+        name: html.css(".gold.centered.center.upper")
+        card_url: html.css("a").attribute("href").value
+      }
+      cards << cardset
     end
-  end 
   cards 
  end 
+ 
+ def self.scrape_ma_card(card_url)
+   card = {}
+   html = Nokogiri::HTML(open(card_url))
+   container = html.css
 
 end
 

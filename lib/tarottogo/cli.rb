@@ -64,5 +64,11 @@ class Tarottogo::CLI
     puts "Please choose a cardset number 1-5, type 'list' to return to main menu, or 'exit' to exit the program:"
   end 
   
+  def display_card(input)
+    card = Tarottogo::Scraper.scrape_by_card(input)[0]
+    puts "#{card[:name]}"
+    puts "#{card[:upright]}"
+    puts "#{card[:reversed]}"
+  end 
   
 end 

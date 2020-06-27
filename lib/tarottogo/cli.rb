@@ -34,15 +34,20 @@ class Tarottogo::CLI
       input = gets.strip
       case input
       when "1"
-        list_cards
+        list_cards('https://www.biddytarot.com/tarot-card-meanings/major-arcana/')
+        Tarottogo::Cardset.print
       when "2"
-        
+        list_cards('https://www.biddytarot.com/tarot-card-meanings/minor-arcana/suit-of-wands/')
+        Tarottogo::Cardset.print
       when "3"
-        
+        list_cards('https://www.biddytarot.com/tarot-card-meanings/minor-arcana/suit-of-cups/')
+        Tarottogo::Cardset.print
       when "4"
-        
+        list_cards('https://www.biddytarot.com/tarot-card-meanings/minor-arcana/suit-of-swords/')
+        Tarottogo::Cardset.print
       when "5"
-        
+        list_cards('https://www.biddytarot.com/tarot-card-meanings/minor-arcana/suit-of-pentacles/')
+        Tarottogo::Cardset.print
       when "list"
         list_cardsets
       when "exit"

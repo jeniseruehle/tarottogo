@@ -13,7 +13,7 @@ class Tarottogo::Scraper
     scrape_cardsets
   end 
   
-  def scrape_cardsets(cardset_url)
+  def scrape_cardsets
     array = []
     html = Nokogiri::HTML(open(@cardset_url))
     html.css('div[class=cardboxwrapper]').each do |cardset|

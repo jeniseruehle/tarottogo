@@ -20,13 +20,6 @@ class Tarottogo::CLI
       puts " "
   end 
   
-  def list_cards(cardset_url)
-    card_array = Tarottogo::Scraper.new(cardset_url).scrape
-    Tarottogo::Cardset.create_from_set(card_array)
-  end 
-  
-  
-  
   def menu
     input = nil 
     while input != "exit"
@@ -56,6 +49,11 @@ class Tarottogo::CLI
        error
       end 
     end
+  end 
+  
+  def list_cards(cardset_url)
+    card_array = Tarottogo::Scraper.new(cardset_url).scrape
+    Tarottogo::Cardset.create_from_set(card_array)
   end 
   
   def goodbye 

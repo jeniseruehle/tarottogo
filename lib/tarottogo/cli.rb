@@ -21,8 +21,8 @@ class Tarottogo::CLI
       puts "Enter the number of the cardset you wish to see or type 'exit' to end:"
   end 
   
-  def list_cards(cardset_url)
-    card_array = Tarottogo::Scraper.new(cardset_url).scrape
+  def list_cards(cards_url)
+    card_array = Tarottogo::Scraper.new(cards_url).scrape
     Tarottogo::Cardset.create_from_set(card_array)
   end 
   

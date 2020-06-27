@@ -36,12 +36,14 @@ class Tarottogo::Scraper
   # card_hash[:meaning] = html.css('p span.purple.bold').text 
   # card_hash[:website] = html.css('div.card_item a').attribute('href')
    
-  html.css('p span.purple.bold').each do |m|
+  html.css('div.col.span_8 p').each do |m|
     if m.text.include?("UPRIGHT")
       card_hash[:upright] = m.text 
     elsif 
       m.text.include?("REVERSED")
-   
+      card_hash[:reversed] = m.text
+    end
+  end 
    card_array << card_hash
    card_array
  end 

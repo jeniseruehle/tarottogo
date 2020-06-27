@@ -5,8 +5,8 @@ require 'nokogiri'
 
 class Tarottogo::Scraper 
   
-  def initialize(cardset_url)
-    @cardset_url = cardset_url
+  def initialize(cards_url)
+    @cards_url = cards_url
   end 
   
   def scrape 
@@ -15,11 +15,11 @@ class Tarottogo::Scraper
   
   def scrape_cardsets
     array = []
-    html = Nokogiri::HTML(open(@cardset_url))
-    html.css('div[class=cardboxwrapper]').each do |cardset|
+    @html = Nokogiri::HTML(open(@cards_url))
+    @html.search('div[class=cardboxwrapper]').each do |cardset|
       cardset_hash = {
-        set: cardset.css('a').attr('href').value,
-        cards_url: "https://www.biddytarot.com/tarot-card-meanings/#{card.css('a').attr('href').value}"}
+        :set => cardset.search('a').attribute('href').value,
+        :cardset_url => "https://www.biddytarot.com/tarot-card-meanings/#{cardset.search('a').attr('href').text}"}
       array << cardset_hash
     end
   array
@@ -33,7 +33,9 @@ class Tarottogo::Scraper
    
    card_hash[:name] = html.css('h4.gold.centered.center.upper')[0].text
    card_hash[:meaning] = html.css('h2.small.purple.upper.center.centered')[0].text 
-   card_hash[:website] = html.css('div.card_item a').attr('href')
+   card_hash[:website] = html.css('div.card_item a').attribute('href')
+   
+   html.css()
    
    card_array << card_hash
    card_array

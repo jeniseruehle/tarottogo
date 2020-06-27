@@ -16,18 +16,18 @@ class Tarottogo::Cardset
   
   def self.create_from_set(card_array)
     card_array.each do |cardset_hash|
-      self.new(cardset_hash)
+      Tarottogo::Cardset.new(cardset_hash)
     end 
   end 
   
-  def self.print 
+  def self.print_all 
     self.all.each_with_index do |card, index|
-      puts "#{index + 1}. #{card.name}"
+      puts "#{index + 1}. #{card.set}"
     end
   end 
 
   def self.select_by_name(input)
-    card_variable = self.all.find {|c| input == c.name}
+    card_variable = Tarottogo::Cardset.all.find {|c| input == c.set}
     card_variable.card_url
   end 
     

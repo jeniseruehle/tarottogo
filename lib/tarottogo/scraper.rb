@@ -19,7 +19,7 @@ class Tarottogo::Scraper
     @html.search('div[class=cardboxwrapper]').each do |cardset|
       cardset_hash = {
         :set => cardset.search('a').attribute('href').value,
-        :cardset_url => "https://www.biddytarot.com/tarot-card-meanings/#{cardset.search('a').attr('href').text}"}
+        :cardset_url => "https://www.biddytarot.com/tarot-card-meanings#{cardset.search('a').attr('href').text}"}
       array << cardset_hash
     end
   array
@@ -31,11 +31,16 @@ class Tarottogo::Scraper
    html = Nokogiri::HTML(open(url))
    card_hash = {}
    
-   card_hash[:name] = html.css('h4.gold.centered.center.upper')[0].text
-   card_hash[:meaning] = html.css('h2.small.purple.upper.center.centered')[0].text 
-   card_hash[:website] = html.css('div.card_item a').attribute('href')
+   card_hash[:name] = html.css('h3')[0].text
    
-   html.css()
+  # card_hash[:meaning] = html.css('p span.purple.bold').text 
+  # card_hash[:website] = html.css('div.card_item a').attribute('href')
+   
+  html.css('p span.purple.bold').each do |m|
+    if m.text.include?("UPRIGHT")
+      card_hash[:upright] = m.text 
+    elsif 
+      m.text.include?("REVERSED")
    
    card_array << card_hash
    card_array

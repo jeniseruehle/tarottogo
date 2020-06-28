@@ -81,9 +81,10 @@ class Tarottogo::CLI
   
   def display_card(input)
     card = Tarottogo::Scraper.scrape_by_card(input)[0]
-    puts "#{card[:name]}"
-    puts "#{card[:upright]}"
-    puts "#{card[:reversed]}"
+    puts "Name: #{card[:name]}"
+    puts "Meaning: #{card[:meaning]}"
+    puts " "
+    puts "To return to main menu type 'list':"
   end 
   
 end 

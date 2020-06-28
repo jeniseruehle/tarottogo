@@ -29,18 +29,23 @@ class Tarottogo::CLI
       when "1"
         list_cards('https://www.biddytarot.com/tarot-card-meanings/major-arcana/')
         Tarottogo::Cardset.print_all
+        next_choice
       when "2"
         list_cards('https://www.biddytarot.com/tarot-card-meanings/minor-arcana/suit-of-wands/')
         Tarottogo::Cardset.print_all
+        next_choice
       when "3"
         list_cards('https://www.biddytarot.com/tarot-card-meanings/minor-arcana/suit-of-cups/')
         Tarottogo::Cardset.print_all
+        next_choice
       when "4"
         list_cards('https://www.biddytarot.com/tarot-card-meanings/minor-arcana/suit-of-swords/')
         Tarottogo::Cardset.print_all
+        next_choice
       when "5"
         list_cards('https://www.biddytarot.com/tarot-card-meanings/minor-arcana/suit-of-pentacles/')
         Tarottogo::Cardset.print_all
+        next_choice
       when "list"
         list_cardsets
       when "exit"

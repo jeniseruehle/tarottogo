@@ -31,9 +31,8 @@ class Tarottogo::Scraper
    html = Nokogiri::HTML(open(url))
    card_hash = {}
    
-   card_hash[:name] = html.css('h4')[0].text
-   card_hash[:meaning] = html.css('p span.purple.bold').text 
-   card_hash[:website] = html.css('div.card_item a').attribute('href')
+   card_hash[:name] = html.css('h4').text
+   card_hash[:meaning] = html.css('h2')[3].text 
    
   # html.css('div.col.span_8 p').each do |m|
   #   if m.text.include?("UPRIGHT")

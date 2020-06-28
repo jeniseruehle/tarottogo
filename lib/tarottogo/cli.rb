@@ -21,11 +21,6 @@ class Tarottogo::CLI
       puts "Enter the number of the cardset you wish to see or type 'exit' to end:"
   end 
   
-  def list_cards(cards_url)
-    card_array = Tarottogo::Scraper.new(cards_url).scrape
-    Tarottogo::Cardset.create_from_set(card_array)
-  end 
-  
   def menu
     input = nil 
     while input != 'exit'
@@ -54,6 +49,26 @@ class Tarottogo::CLI
        error
       end 
     end
+  end 
+  
+  def list_cards(cards_url)
+    card_array = Tarottogo::Scraper.new(cards_url).scrape
+    Tarottogo::Cardset.create_from_set(card_array)
+  end 
+  
+  def next_choice
+    puts "Please enter the number for the cardset you wish to see or type 'list' tp return to main menu."
+    input = gets.strip
+    if input == "list"
+      Tarottogo::Cardset.destroy
+      list_cardsets
+    elsif 
+      input == "exit"
+      goodbye
+    elsif
+      Tarottogo::Scraper.scrape_by_card(input)
+      display_card(input)
+    end 
   end 
   
   def goodbye 

@@ -4,7 +4,7 @@ require 'open-uri'
 require 'nokogiri'
 
 class Tarottogo::Cardset
-  attr_accessor :set, :name, :card_url, :meaning
+  attr_accessor :set, :card_url
  
   @@all = [] 
   

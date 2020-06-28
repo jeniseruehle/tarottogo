@@ -27,8 +27,8 @@ class Tarottogo::CLI
   end 
   
   def menu
-    input = " " 
-    while input != "exit"
+    input = nil 
+    while input != 'exit'
       input = gets.strip
       case input
       when "1"

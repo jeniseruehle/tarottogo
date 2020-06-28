@@ -56,13 +56,13 @@ class Tarottogo::CLI
     end
   end 
   
-  def list_cards(cards_url)
-    card_array = Tarottogo::Scraper.new(cards_url).scrape
+  def list_cards(card_url)
+    card_array = Tarottogo::Scraper.new(card_url).scrape
     Tarottogo::Cardset.create_from_set(card_array)
   end 
   
   def next_choice
-    puts "Please enter the number for the cardset you wish to see or type 'list' tp return to main menu."
+    puts "Enter the number for the cardset you wish to see or type 'list' to return to main menu."
     input = gets.strip
     if input == "list"
       Tarottogo::Cardset.destroy

@@ -20,7 +20,7 @@ class Tarottogo::Scraper
  def self.scrape_by_card(card_page)
    card = {}
    card_meaning = Nokogiri::HTML(open(card_page))
-   meanings = card_meaning.css("")
+   meanings = card_meaning.css(".card-item-content").children.map(&:descendants).flatten
  end 
 
 end

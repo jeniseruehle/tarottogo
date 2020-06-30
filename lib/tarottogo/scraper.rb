@@ -5,21 +5,13 @@ require 'nokogiri'
 
 class Tarottogo::Scraper 
   
-  def initialize(cards_url)
-    @cards_url = cards_url
-  end 
-  
-  def scrape 
-    scrape_cardsets
-  end 
-  
-  def scrape_cardsets
+  def self.scrape_cardsets(cardset_url)
     array = []
-    @html = Nokogiri::HTML(open(@cards_url))
-    @html.search('div[class=cardboxwrapper]').each do |cardset|
+    cardset = Nokogiri::HTML(open(cardset_url))
+    cards.css("div.class=cardboxwrapper").each do |cards|
       cardset_hash = {
-        :set => cardset.search('a').attribute('href').value.split('/').join.gsub("-", " ").capitalize,
-        :cardset_url => "https://www.biddytarot.com/tarot-card-meanings#{cardset.search('a').attr('href').text}"}
+        :set => cards.css('a').attribute('href').text,
+        :cardset_url => "https://www.biddytarot.com/tarot-card-meanings#{cards.css('a').attr('href').text}"}
       array << cardset_hash
     end
   array

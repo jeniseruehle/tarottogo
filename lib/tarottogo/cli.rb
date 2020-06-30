@@ -28,23 +28,23 @@ class Tarottogo::CLI
       input = gets.strip
       case input
       when "1"
-        list_cards('https://www.biddytarot.com/tarot-card-meanings/major-arcana/')
+        list_cards
         Tarottogo::Cardset.print_all
         next_choice
       when "2"
-        list_cards('https://www.biddytarot.com/tarot-card-meanings/minor-arcana/suit-of-wands/')
+        list_cards
         Tarottogo::Cardset.print_all
         next_choice
       when "3"
-        list_cards('https://www.biddytarot.com/tarot-card-meanings/minor-arcana/suit-of-cups/')
+        list_cards
         Tarottogo::Cardset.print_all
         next_choice
       when "4"
-        list_cards('https://www.biddytarot.com/tarot-card-meanings/minor-arcana/suit-of-swords/')
+        list_cards
         Tarottogo::Cardset.print_all
         next_choice
       when "5"
-        list_cards('https://www.biddytarot.com/tarot-card-meanings/minor-arcana/suit-of-pentacles/')
+        list_cards
         Tarottogo::Cardset.print_all
         next_choice
       when "list"
@@ -57,8 +57,8 @@ class Tarottogo::CLI
     end
   end 
   
-  def list_cards(card_url)
-    card_array = Tarottogo::Scraper.new(card_url).scrape
+  def list_cards
+    card_array = Tarottogo::Scraper.scrape_cardsets(BASE_PATH + 'cardset.html')
     Tarottogo::Cardset.create_from_set(card_array)
   end 
   

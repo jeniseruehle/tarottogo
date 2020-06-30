@@ -4,13 +4,13 @@ require 'open-uri'
 require 'nokogiri'
 
 class Tarottogo::Cardset
-  attr_accessor :set, :card_url
+  attr_accessor :set, :cardset_url
  
   @@all = [] 
   
   def initialize(cardset_hash)
     self.send('set=', cardset_hash[:set])
-    self.send('card_url=', cardset_hash[:card_url])
+    self.send('card_url=', cardset_hash[:cardset_url])
      @@all << self 
   end 
   

@@ -18,10 +18,17 @@ class Tarottogo::Scraper
  end 
  
  def self.scrape_by_card(card_page)
-   card = {}
+   tarot = {}
    card_meaning = Nokogiri::HTML(open(card_page))
    meanings = card_meaning.css(".card-item-content").children.map(&:descendants).flatten
- end 
-
-end
-
+   meanings.each do |card|
+     if card.include?("upright")
+       tarot[:upright] = card 
+     elsif card.include?("reversed")
+       tarot[:reversed] = card
+     else 
+       tarot[:name] = card
+     end
+  end 
+end 
+end 

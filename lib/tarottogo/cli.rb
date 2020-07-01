@@ -57,7 +57,7 @@ class Tarottogo::CLI
   end 
   
   def create_cards(cardset_url)
-    card_array = Tarottogo::Scraper.new(cardset_url).scrape
+    card_array = Tarottogo::Scraper.scrape_cardsets(cardset_url)
     Tarottogo::Tarot.create_from_set(card_array)
   end 
   

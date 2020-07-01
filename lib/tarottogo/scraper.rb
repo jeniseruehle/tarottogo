@@ -19,7 +19,7 @@ class Tarottogo::Scraper
   end 
  
   def self.scrape_card_page(input)
-   card_url = Tarot.select_by_card(input)  
+   card_url = Tarottogo::Tarot.select_by_card(input)  
    description_array = []
    index = Nokogiri::HTML(open(card_url))
    card_hash = {}

@@ -19,4 +19,15 @@ class Tarottogo::Tarot
     end 
   end 
   
+  def add_card_meanings(meanings_hash)
+    meanings_hash.each do |k, v|
+      self.send(("#{k}="), v)
+    end 
+    self 
+  end 
+  
+  def self.all 
+    @@all 
+  end 
+  
 end 

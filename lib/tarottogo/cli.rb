@@ -1,6 +1,4 @@
 require 'pry'
-require 'nokogiri'
-require 'open-uri'
 
 class CLI 
   

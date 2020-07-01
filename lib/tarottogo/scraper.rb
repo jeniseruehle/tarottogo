@@ -10,7 +10,7 @@ class Tarottogo::Scraper
     index = Nokogiri::HTML(open(cardset_url))
     index.css("div#biddy_card_list").each do |cards|
       cardset_hash = {
-        name: cards.css(".gold.centered.center.upper").text,
+        name: cards.css("h4.gold.centered.center.upper").text,
         url: "https://www.biddytarot.com/#{cards.css('a').attribute('href').value}"
         }
       cards_array << cardset_hash
@@ -21,12 +21,15 @@ class Tarottogo::Scraper
   def self.scrape_card_page(card_url)
    card = {}
    index = Nokogiri::HTML(open(card_url))
+   
+   card[:name_keywords] = index.css('h3.center.lightpurple.fs24.bold.padbot15').text
+   
    description = index.css(".col.span_8 p span.purple.bold").collect {|m| m.text}
    description.each do |c|
      if c.include?("UPRIGHT")
-       card[:upright] = c 
+       card[:upright] = c.text 
      elsif c.include?("REVERSED")
-       card[:reversed] = c
+       card[:reversed] = c.text
      end
   end 
   card

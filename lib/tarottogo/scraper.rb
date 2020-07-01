@@ -18,9 +18,11 @@ class Tarottogo::Scraper
     cards_array
   end 
  
-  def self.scrape_card_page(card_url)
-   card = {}
+  def self.scrape_card_page(input)
+   card_url = Tarot.select_by_card(input)  
+   description_array = []
    index = Nokogiri::HTML(open(card_url))
+   card_hash = {}
    
    card[:name_keywords] = index.css('h3.center.lightpurple.fs24.bold.padbot15').text
    
@@ -32,5 +34,7 @@ class Tarottogo::Scraper
        card[:reversed] = c.text
      end
   end 
-  card
+  description_array << card_hash
+  description_array
+end 
 end 

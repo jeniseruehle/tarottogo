@@ -3,7 +3,7 @@ require 'pry'
 require 'open-uri'
 require 'nokogiri'
 
-class Tarottogo::Cardset
+class Tarottogo::Tarot
   attr_accessor :set, :cardset_url
  
   @@all = [] 
@@ -16,7 +16,7 @@ class Tarottogo::Cardset
   
   def self.create_from_set(card_array)
     card_array.each do |cardset_hash|
-      Tarottogo::Cardset.new(cardset_hash)
+      Tarottogo::Tarot.new(cardset_hash)
     end 
   end 
   
@@ -27,7 +27,7 @@ class Tarottogo::Cardset
   end 
 
   def self.select_by_name(input)
-    card_variable = Tarottogo::Cardset.all.find {|c| input == c.set}
+    card_variable = Tarottogo::Tarot.all.find {|c| input == c.set}
     card_variable.card_url
   end 
     

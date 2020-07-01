@@ -6,12 +6,12 @@ class Tarottogo::CLI
   BASE_PATH = "https://www.biddytarot.com/tarot-card-meanings/"
   
   def call 
-    puts "Welcome to Tarot To Go:"
     list_cardsets
     menu
   end 
   
   def list_cardsets
+      puts "Welcome to Tarot To Go:"
       puts " "
       puts "1. Major Arcana"
       puts "2. Wands"
@@ -85,12 +85,12 @@ class Tarottogo::CLI
     puts "Please choose a cardset number 1-5, type 'list' to return to main menu, or 'exit' to exit the program:"
   end 
   
-  def display_card(input)
-    card = Tarottogo::Scraper.scrape_by_card(input)[0]
-    puts "Name: #{card[:name]}"
-    puts "Meaning: #{card[:meaning]}"
-    puts " "
-    puts "To return to main menu type 'list':"
-  end 
+  # def display_card(input)
+  #   card = Tarottogo::Scraper.scrape_by_card(input)[0]
+  #   puts "Name: #{card[:name]}"
+  #   puts "Meaning: #{card[:meaning]}"
+  #   puts " "
+  #   puts "To return to main menu type 'list':"
+  # end 
   
 end 

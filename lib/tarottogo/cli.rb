@@ -32,24 +32,34 @@ class CLI
       input = gets.strip
       case input
       when "1"
+        puts " "
         make_cards('https://www.biddytarot.com/tarot-card-meanings/major-arcana/')
         Tarot.print_all
+        puts " "
         next_choice
       when "2"
+        puts " "
         make_cards('https://www.biddytarot.com/tarot-card-meanings/suit-of-wands/')
         Tarot.print_all
+        puts " "
         next_choice
       when "3"
+        puts " "
         make_cards('https://www.biddytarot.com/tarot-card-meanings/suit-of-cups/')
         Tarot.print_all
+        puts " "
         next_choice
       when "4"
+        puts " "
         make_cards('https://www.biddytarot.com/tarot-card-meanings/suit-of-swords/')
         Tarot.print_all
+        puts " "
         next_choice
       when "5"
+        puts " "
         make_cards('https://www.biddytarot.com/tarot-card-meanings/suit-of-pentacles/')
         Tarot.print_all
+        puts " "
         next_choice
       when "list"
         list_cardsets

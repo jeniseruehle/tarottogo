@@ -3,7 +3,6 @@ require 'nokogiri'
 require 'open-uri'
 
 class Tarottogo::CLI 
-  BASE_PATH = "https://www.biddytarot.com/tarot-card-meanings/"
   
   def call 
     list_cardsets

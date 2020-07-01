@@ -4,12 +4,13 @@ require 'open-uri'
 require 'nokogiri'
 
 class Tarottogo::Tarot
-  attr_accessor :name, :url, :upright, :reversed
+  attr_accessor :name, :url, :name_keywords, :upright, :reversed
   
   @@all = []
   
   def initialize(card_hash)
-    card_hash.each {|k, v| self.send ("#{k}="), v}
+    self.send('name=', card_hash[:name])
+    self.send('url=', card_hash[:url])
     @@all << self 
   end 
   
@@ -19,11 +20,15 @@ class Tarottogo::Tarot
     end 
   end 
   
-  def add_card_meanings(meanings_hash)
-    meanings_hash.each do |k, v|
-      self.send(("#{k}="), v)
+  def self.print_all
+    self.all.each_with_index do |card, index|
+      puts "#{index + 1}. #{card.name}"
     end 
-    self 
+  end 
+  
+  def self.select_by_card(input)
+    card_variable = self.all.find {|c| input == c.name}
+    card_variable.url
   end 
   
   def self.all 

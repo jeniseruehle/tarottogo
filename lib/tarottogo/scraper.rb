@@ -24,9 +24,7 @@ class Scraper
    index = Nokogiri::HTML(open(url))
    card_hash = {}
    
-   card_hash[:name_keywords] = index.css('h3.center.lightpurple.fs24.bold.padbot15').text
-   
-   index.css(".col.span_8 p span.purple.bold").each do |mean|
+   index.css(".col.span_8 p").each do |mean|
      if mean.text.include?("UPRIGHT")
        card_hash[:upright] = mean.text 
      elsif mean.text.include?("REVERSED")

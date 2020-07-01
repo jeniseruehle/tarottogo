@@ -12,7 +12,7 @@ class Scraper
       cards.css(".card_item a").each do |single| 
         card_link = "#{single.attr('href')}"
         card_name = single.css(".gold.centered.center.upper").text
-        cards_array << {name: card_name}
+        cards_array << {name: card_name, url: card_link}
       end 
     end
     cards_array

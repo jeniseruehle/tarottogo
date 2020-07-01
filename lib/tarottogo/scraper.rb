@@ -11,13 +11,14 @@ class Tarottogo::Scraper
     cards.css("div.card_item").each do |cards|
       cardset_hash = {
         name: cards.css(".gold.centered.center.upper").text,
+        url: cards.css("a").attribute("href").value
         }
       array << cardset_hash
     end
   array
  end 
  
- def self.scrape_by_card(card_page)
+ def self.scrape_card_page(card_url)
    tarot = {}
    card_meaning = Nokogiri::HTML(open(card_page))
    meanings = card_meaning.css(".card-item-content").children.map(&:descendants).flatten

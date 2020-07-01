@@ -27,23 +27,23 @@ class Tarottogo::CLI
       input = gets.strip
       case input
       when "1"
-        create_cards('https://www.biddytarot.com/tarot-card-meanings/major-arcana/')
+        make_cards('https://www.biddytarot.com/tarot-card-meanings/major-arcana/')
         Tarottogo::Tarot.print_all
         next_choice
       when "2"
-        create_cards('https://www.biddytarot.com/tarot-card-meanings/suit-of-wands/')
+        make_cards('https://www.biddytarot.com/tarot-card-meanings/suit-of-wands/')
         Tarottogo::Tarot.print_all
         next_choice
       when "3"
-        create_cards('https://www.biddytarot.com/tarot-card-meanings/suit-of-cups/')
+        make_cards('https://www.biddytarot.com/tarot-card-meanings/suit-of-cups/')
         Tarottogo::Tarot.print_all
         next_choice
       when "4"
-        create_cards('https://www.biddytarot.com/tarot-card-meanings/suit-of-swords/')
+        make_cards('https://www.biddytarot.com/tarot-card-meanings/suit-of-swords/')
         Tarottogo::Tarot.print_all
         next_choice
       when "5"
-        create_cards('https://www.biddytarot.com/tarot-card-meanings/suit-of-pentacles/')
+        make_cards('https://www.biddytarot.com/tarot-card-meanings/suit-of-pentacles/')
         Tarottogo::Tarot.print_all
         next_choice
       when "list"
@@ -56,7 +56,7 @@ class Tarottogo::CLI
     end
   end 
   
-  def create_cards(cardset_url)
+  def make_cards(cardset_url)
     cards_array = Tarottogo::Scraper.scrape_cardsets(cardset_url) 
     Tarottogo::Tarot.create_from_cardset(cards_array)
   end 

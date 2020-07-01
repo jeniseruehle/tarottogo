@@ -14,8 +14,8 @@ class Tarottogo::Tarot
     @@all << self 
   end 
   
-  def create_from_cardset(card_array)
-    card_array.each do |card_hash| 
+  def create_from_cardset(cards_array)
+    cards_array.each do |card_hash| 
       self.new(card_hash)
     end 
   end 

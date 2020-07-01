@@ -15,21 +15,19 @@ class Tarottogo::Scraper
         }
       cards_array << cardset_hash
     end
-  cards_array
- end 
+    cards_array
+  end 
  
- def self.scrape_card_page(card_url)
+  def self.scrape_card_page(card_url)
    card = {}
    index = Nokogiri::HTML(open(card_url))
-   meanings = card_meaning.css(".card-item-content").children.map(&:descendants).flatten
-   meanings.each do |card|
-     if card.include?("upright")
-       tarot[:upright] = card 
-     elsif card.include?("reversed")
-       tarot[:reversed] = card
-     else 
-       tarot[:name] = card
+   description = index.css(".col.span_8 p span.purple.bold").collect {|m| m.text}
+   description.each do |c|
+     if c.include?("UPRIGHT")
+       card[:upright] = c 
+     elsif c.include?("REVERSED")
+       card[:reversed] = c
      end
   end 
-end 
+  card
 end 

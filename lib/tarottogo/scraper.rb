@@ -10,7 +10,11 @@ class Scraper
     cards_array = []
     index.css("div#biddy_card_list").each do |cards|
       cards.css(".card_item a").each do |single| 
-        card_link = "#{single.attr('href')}"
+        if single.include?("https://www.biddytarot.com/tarot-card-meanings/") 
+          card_link = "#{single.attr('href')}"
+        else
+          card_link = "https://www.biddytarot.com/#{single.attr('href')}"
+        end 
         card_name = single.css(".gold.centered.center.upper").text
         cards_array << {name: card_name, url: card_link}
       end 

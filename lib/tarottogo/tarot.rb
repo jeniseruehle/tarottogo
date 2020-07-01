@@ -10,6 +10,7 @@ class Tarot
   
   def initialize(card_hash)
     self.send('name=', card_hash[:name])
+    self.send('url=', card_hash[:url])
     @@all << self 
   end 
   

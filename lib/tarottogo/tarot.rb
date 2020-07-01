@@ -4,13 +4,12 @@ require 'open-uri'
 require 'nokogiri'
 
 class Tarot 
-  attr_accessor :name, :url, :name_keywords, :upright, :reversed
+  attr_accessor :name, :name_keywords, :upright, :reversed
   
   @@all = []
   
   def initialize(card_hash)
     self.send('name=', card_hash[:name])
-    self.send('url=', card_hash[:url])
     @@all << self 
   end 
   
@@ -33,6 +32,10 @@ class Tarot
   
   def self.all 
     @@all 
+  end 
+  
+  def self.destroy
+    @@all.clear
   end 
   
 end 

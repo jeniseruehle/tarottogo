@@ -62,6 +62,7 @@ class CLI
         puts " "
         next_choice
       when "list"
+        Tarot.destroy
         list_cardsets
       when "exit"
         goodbye
@@ -84,6 +85,7 @@ class CLI
     puts "Enter the number for the cardset you wish to see or type 'list' to return to main menu."
     input = gets.strip
     if input == "list"
+      Tarot.destroy
       list_cardsets
     elsif 
       input == "exit"

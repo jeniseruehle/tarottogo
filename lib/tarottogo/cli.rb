@@ -75,8 +75,8 @@ class CLI
   def display_card(input)
     card = Scraper.scrape_card_page(input)[0]
     puts "#{card[:name_keywords]}"
-    puts "Upright: #{card[:upright]}"
-    puts "Reversed: #{card[:reversed]}"
+    puts "#{card[:upright]}"
+    puts "#{card[:reversed]}"
     puts " "
     puts "To return type 'list':"
   end 

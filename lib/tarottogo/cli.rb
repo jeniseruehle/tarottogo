@@ -74,15 +74,15 @@ class CLI
   
   def display_card(input)
     card = Scraper.scrape_card_page(input)[0]
-    puts "#{card[:name_keywords]}"
-    puts "Upright: #{card[:upright]}"
-    puts "Reversed: #{card[:reversed]}"
+    puts "#{card_meaning[:name_keywords]}"
+    puts "Upright: #{card_meaning[:upright]}"
+    puts "Reversed: #{card_meaning[:reversed]}"
     puts " "
     puts "To return type 'list':"
   end 
   
   def next_choice
-    puts "Enter the number for the cardset you wish to see or type 'list' to return to main menu."
+    puts "Enter the name for the card you wish to see or type 'list' to return to main menu."
     input = gets.strip
     if input == "list"
       Tarot.destroy

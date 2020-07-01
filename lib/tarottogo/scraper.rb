@@ -28,5 +28,7 @@ class Scraper
      end
   end 
   card_meaning[:name_keywords] = index.css('h3.center.lightpurple.fs24.bold.padbot15').text
+  
+  card_meaning
 end 
 end 

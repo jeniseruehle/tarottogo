@@ -17,18 +17,22 @@ class Scraper
     cards_array
   end 
  
-  def self.scrape_card_page(card_url)
-   card_meaning = {}
+  def self.scrape_card_page(input)
+   card_url = Tarot.select_by_card(input)
+   meaning_array = []
    index = Nokogiri::HTML(open(card_url))
-   meaning = index.css(".col.span_8 p span.purple.bold").each do |mean|
-     if mean.include?("UPRIGHT")
-       card_meaning[:upright] = mean.text 
-     elsif mean.include?("REVERSED")
-       card_meaning[:reversed] = mean.text
+   card_hash = {}
+   
+   card_hash[:name_keywords] = index.css('h3.center.lightpurple.fs24.bold.padbot15').text
+   
+   index.css(".col.span_8 p span.purple.bold").each do |mean|
+     if mean.text.include?("UPRIGHT")
+       card_hash[:upright] = mean.text 
+     elsif mean.text.include?("REVERSED")
+       card_hash[:reversed] = mean.text
      end
   end 
-  card_meaning[:name_keywords] = index.css('h3.center.lightpurple.fs24.bold.padbot15').text
-  
-  card_meaning
+  meaning_array << card_hash
+  meaning_array
 end 
 end 

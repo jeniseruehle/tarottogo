@@ -20,14 +20,13 @@ class Scraper
   def self.scrape_card_page(card_url)
    card_meaning = {}
    index = Nokogiri::HTML(open(card_url))
-   meaning = index.css(".col.span_8 p span.purple.bold").collect {|m| m.text}
-   meaning.each do |c|
-     if c.include?("UPRIGHT")
-       card[:upright] = c.text 
-     elsif c.include?("REVERSED")
-       card[:reversed] = c.text
+   meaning = index.css(".col.span_8 p span.purple.bold").each do |mean|
+     if mean.include?("UPRIGHT")
+       card_meaning[:upright] = mean.text 
+     elsif mean.include?("REVERSED")
+       card_meaning[:reversed] = mean.text
      end
   end 
-  card[:name_keywords] = index.css('h3.center.lightpurple.fs24.bold.padbot15').text
+  card_meaning[:name_keywords] = index.css('h3.center.lightpurple.fs24.bold.padbot15').text
 end 
 end 

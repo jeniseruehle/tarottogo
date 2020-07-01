@@ -9,11 +9,11 @@ class Scraper
     cards_array = []
     index = Nokogiri::HTML(open(cardset_url))
     index.css("div#biddy_card_list").each do |cards|
-      cardset_hash = {
-        name: cards.css("h4.gold.centered.center.upper").text,
-        url: "https://www.biddytarot.com/#{cards.css('a').attribute('href').value}"
-        }
-      cards_array << cardset_hash
+      cards.css(".card-item-content").each do |single| 
+        card_name = single.css("h4.gold.centered.center.upper").text,
+        single_url = "https://www.biddytarot.com/#{single.css('a').attribute('href').value}"
+      cards_array << {name: card_name, url: single_url}
+      end 
     end
     cards_array
   end 

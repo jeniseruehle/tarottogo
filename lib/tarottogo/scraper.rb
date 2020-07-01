@@ -8,10 +8,10 @@ class Tarottogo::Scraper
   def self.scrape_cardsets(cardset_url)
     array = []
     cardset = Nokogiri::HTML(open(cardset_url))
-    cards.css("div.class=cardboxwrapper").each do |cards|
+    cards.css("div.card_item").each do |cards|
       cardset_hash = {
-        :set => cards.css('a').attribute('href').text,
-        :cardset_url => "https://www.biddytarot.com/tarot-card-meanings#{cards.css('a').attr('href').text}"}
+        name: cards.css(".gold.centered.center.upper").text,
+        }
       array << cardset_hash
     end
   array

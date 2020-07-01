@@ -63,8 +63,11 @@ class Tarottogo::CLI
   
   def display_card(input)
     card = Tarottogo::Scraper.scrape_card_page(input)[0]
-    puts "#{card[:name]}"
-    puts ""
+    puts "#{card[:name_keywords]}"
+    puts "Upright: #{card[:upright]}"
+    puts "Reversed: #{card[:reversed]}"
+    puts " "
+    puts "To return type 'list':"
   end 
   
   def next_choice

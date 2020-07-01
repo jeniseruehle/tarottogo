@@ -3,7 +3,7 @@ require 'pry'
 require 'open-uri'
 require 'nokogiri'
 
-class Tarottogo::Tarot 
+class Tarot 
   attr_accessor :name, :url, :name_keywords, :upright, :reversed
   
   @@all = []

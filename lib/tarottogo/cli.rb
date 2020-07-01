@@ -2,7 +2,7 @@ require 'pry'
 require 'nokogiri'
 require 'open-uri'
 
-class Tarottogo::CLI 
+class CLI 
   
   def call 
     list_cardsets
@@ -22,8 +22,8 @@ class Tarottogo::CLI
   end 
   
   def make_cards(cardset_url)
-    cards_array = Tarottogo::Scraper.scrape_cardsets(cardset_url) 
-    Tarottogo::Tarot.create_from_cardset(cards_array)
+    cards_array = Scraper.scrape_cardsets(cardset_url) 
+    Tarot.create_from_cardset(cards_array)
   end 
   
   def menu
@@ -33,23 +33,23 @@ class Tarottogo::CLI
       case input
       when "1"
         make_cards('https://www.biddytarot.com/tarot-card-meanings/major-arcana/')
-        Tarottogo::Tarot.print_all
+        Tarot.print_all
         next_choice
       when "2"
         make_cards('https://www.biddytarot.com/tarot-card-meanings/suit-of-wands/')
-        Tarottogo::Tarot.print_all
+        Tarot.print_all
         next_choice
       when "3"
         make_cards('https://www.biddytarot.com/tarot-card-meanings/suit-of-cups/')
-        Tarottogo::Tarot.print_all
+        Tarot.print_all
         next_choice
       when "4"
         make_cards('https://www.biddytarot.com/tarot-card-meanings/suit-of-swords/')
-        Tarottogo::Tarot.print_all
+        Tarot.print_all
         next_choice
       when "5"
         make_cards('https://www.biddytarot.com/tarot-card-meanings/suit-of-pentacles/')
-        Tarottogo::Tarot.print_all
+        Tarot.print_all
         next_choice
       when "list"
         list_cardsets
@@ -62,7 +62,7 @@ class Tarottogo::CLI
   end 
   
   def display_card(input)
-    card = Tarottogo::Scraper.scrape_card_page(input)[0]
+    card = Scraper.scrape_card_page(input)[0]
     puts "#{card[:name_keywords]}"
     puts "Upright: #{card[:upright]}"
     puts "Reversed: #{card[:reversed]}"
@@ -79,7 +79,7 @@ class Tarottogo::CLI
       input == "exit"
       goodbye
     elsif
-      Tarottogo::Scraper.scrape_card_page(input)
+      Scraper.scrape_card_page(input)
       display_card(input)
     end 
   end 

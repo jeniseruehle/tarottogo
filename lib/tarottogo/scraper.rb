@@ -10,7 +10,7 @@ class Scraper
     cards_array = []
     index.css("div#biddy_card_list").each do |cards|
       cards.css(".card_item a").each do |single| 
-        card_link = "#{single.attr('href')}"
+        card_link = "https://www.biddytarot.com/#{single.attr('href')}"
         card_name = single.css(".gold.centered.center.upper").text
         cards_array << {name: card_name, url: card_link}
       end 
@@ -19,9 +19,9 @@ class Scraper
   end 
  
   def self.scrape_card_page(input)
-   card_url = Tarot.select_by_card(input)
+   url = Tarot.select_by_card(input)
    meaning_array = []
-   index = Nokogiri::HTML(open(card_url))
+   index = Nokogiri::HTML(open(url))
    card_hash = {}
    
    card_hash[:name_keywords] = index.css('h3.center.lightpurple.fs24.bold.padbot15').text

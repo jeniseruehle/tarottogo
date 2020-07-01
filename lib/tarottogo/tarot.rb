@@ -27,7 +27,7 @@ class Tarot
   end 
   
   def self.select_by_card(input)
-    card_variable = self.all.find {|c| input == c.name}
+    card_variable = Tarot.all.find {|c| input == c.name}
     card_variable.url
   end 
   

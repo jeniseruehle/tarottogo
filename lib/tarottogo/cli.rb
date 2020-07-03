@@ -76,7 +76,7 @@ class CLI
     puts "#{card[:upright]}"
     puts "#{card[:reversed]}"
     puts " "
-    puts "To return type 'list':"
+    puts "To return type 'list' or 'exit' to end:"
   end 
   
   def next_choice

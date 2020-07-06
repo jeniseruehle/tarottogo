@@ -38,5 +38,4 @@ class Tarot
   def self.destroy
     @@all.clear
   end 
-  
 end 

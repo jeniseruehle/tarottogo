@@ -99,7 +99,7 @@ class CLI
   end 
   
   def error
-    puts "Please choose a cardset number 1-5, type 'list' to return to main menu, or 'exit' to exit the program:"
+    puts "Please choose a cardset number 1-5 or 'exit' to exit the program:"
   end 
   
   

@@ -99,7 +99,7 @@ class CLI
   end 
   
   def error
-    puts "Uh Oh! Something's not quite right, try again:"
+    puts "Uh Oh! Something's not quite right, please try again:"
   end 
   
   

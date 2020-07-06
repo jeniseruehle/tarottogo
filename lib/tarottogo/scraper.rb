@@ -16,7 +16,7 @@ class Scraper
           card_link = "https://www.biddytarot.com/#{single.attr('href')}"
         end 
         card_name = single.css(".gold.centered.center.upper").text
-        cards_array << {name: card_name, url: card_link}
+        cards_array << {name: card_name, link: card_link}
       end 
     end
     cards_array

@@ -4,13 +4,13 @@ require 'open-uri'
 require 'nokogiri'
 
 class Tarot 
-  attr_accessor :name, :url, :name_keywords, :upright, :reversed
+  attr_accessor :name, :link, :name_keywords, :upright, :reversed
   
   @@all = []
   
   def initialize(card_hash)
     self.send('name=', card_hash[:name])
-    self.send('url=', card_hash[:url])
+    self.send('link=', card_hash[:link])
     @@all << self 
   end 
   
@@ -28,7 +28,7 @@ class Tarot
   
   def self.select_by_card(input)
     card_variable = Tarot.all.find {|c| input == c.name}
-    card_variable.url
+    card_variable.link 
   end 
   
   def self.all 

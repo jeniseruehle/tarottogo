@@ -16,7 +16,7 @@ class CLI
       puts "4. Swords"
       puts "5. Pentacles"
       puts " "
-      puts "Enter the number of the cardset you wish to see or type 'exit' to end:"
+      puts "Please type the cardset number or name (case-sensitive) you wish to see or type 'exit' to end:"
   end 
   
   def make_cards(cardset_url)
@@ -29,31 +29,31 @@ class CLI
     while input != 'exit'
       input = gets.strip
       case input
-      when "1"
+      when "1","Major Arcana"
         puts " "
         make_cards('https://www.biddytarot.com/tarot-card-meanings/major-arcana/')
         Tarot.print_all
         puts " "
         next_choice
-      when "2"
+      when "2","Wands"
         puts " "
         make_cards('https://www.biddytarot.com/tarot-card-meanings/suit-of-wands/')
         Tarot.print_all
         puts " "
         next_choice
-      when "3"
+      when "3","Cups"
         puts " "
         make_cards('https://www.biddytarot.com/tarot-card-meanings/suit-of-cups/')
         Tarot.print_all
         puts " "
         next_choice
-      when "4"
+      when "4","Swords"
         puts " "
         make_cards('https://www.biddytarot.com/tarot-card-meanings/suit-of-swords/')
         Tarot.print_all
         puts " "
         next_choice
-      when "5"
+      when "5","Pentacles"
         puts " "
         make_cards('https://www.biddytarot.com/tarot-card-meanings/suit-of-pentacles/')
         Tarot.print_all
@@ -80,7 +80,7 @@ class CLI
   end 
   
   def next_choice
-    puts "Type the name of the card you wish to see or 'list' for the main menu:"
+    puts "Type the card name (case-sensitive) you wish to see or 'list' for main menu:"
     input = gets.strip
     if input == "list"
       Tarot.destroy
@@ -99,7 +99,7 @@ class CLI
   end 
   
   def error
-    puts "Please choose a cardset number 1-5 or 'exit' to exit the program:"
+    puts "Uh Oh! Something's not quite right, try again:"
   end 
   
   

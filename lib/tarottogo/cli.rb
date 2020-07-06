@@ -80,7 +80,7 @@ class CLI
   end 
   
   def next_choice
-    puts "Enter the name for the card you wish to see or type 'list' to return to main menu."
+    puts "Type the name of the card you wish to see or 'list' for the main menu:"
     input = gets.strip
     if input == "list"
       Tarot.destroy

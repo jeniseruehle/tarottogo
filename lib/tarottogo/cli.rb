@@ -89,7 +89,6 @@ class CLI
       input == "exit"
       goodbye
     elsif
-      Scraper.scrape_card_page(input)
       display_card(input)
     end 
   end 

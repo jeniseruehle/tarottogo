@@ -23,7 +23,7 @@ class Scraper
   end 
  
   def self.scrape_card_page(input)
-   url = Tarot.select_by_card(input)
+   url = Tarot.find_by_card(input)
    meaning_array = []
    index = Nokogiri::HTML(open(url))
    card_hash = {}

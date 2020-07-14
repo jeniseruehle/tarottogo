@@ -4,7 +4,7 @@ require 'open-uri'
 require 'nokogiri'
 
 class Tarot 
-  attr_accessor :name, :link, :name_keywords, :upright, :reversed
+  attr_accessor :name, :link, :upright, :reversed
   
   @@all = []
   

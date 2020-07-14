@@ -72,7 +72,7 @@ class CLI
   
   def display_card(input)
     card = Scraper.scrape_card_page(input)[0]
-    puts "#{card[:name_keywords]}"
+    puts " "
     puts "#{card[:upright]}"
     puts "#{card[:reversed]}"
     puts " "
